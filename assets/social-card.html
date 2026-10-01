@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}html,body{margin:0;width:1200px;height:675px}
+body{background:#f4f4f4;color:#161616;font-family:"IBM Plex Sans",Arial,sans-serif;padding:64px 74px;display:flex;flex-direction:column;justify-content:space-between}
+.top{display:flex;justify-content:space-between;align-items:flex-start;border-top:5px solid #0f62fe;padding-top:18px}
+.mark{font-size:24px;font-weight:700;letter-spacing:.04em}.small{font-size:19px;color:#525252}
+h1{font-size:76px;font-weight:300;line-height:1.06;letter-spacing:-2px;margin:24px 0 12px;max-width:960px}
+h1 strong{font-weight:600;color:#0f62fe}
+p{font-size:30px;color:#525252;line-height:1.25;margin:0;max-width:900px}
+.terminal{background:#161616;color:#fff;padding:18px 29px;font-family:"DejaVu Sans Mono",monospace;font-size:22px;line-height:1.45}
+.red{color:#ff8389}.green{color:#42be65}.dim{color:#a8a8a8}
+.footer{font-size:20px;color:#525252;display:flex;justify-content:space-between}
+</style></head><body>
+<div class="top"><span class="mark">corswhy</span><span class="small">READ ONLY CORS DIAGNOSIS</span></div>
+<div><h1>Find the header that <strong>blocks your browser.</strong></h1><p>One OPTIONS request. A check for each preflight response header.</p></div>
+<div class="terminal"><div><span class="dim">$</span> corswhy http://localhost:8000/api \</div><div>&nbsp; --origin http://localhost:5173 --method PUT</div><div><span class="red">FAIL</span> OPTIONS status&nbsp;&nbsp; 401</div><div><span class="red">FAIL</span> Allow origin&nbsp;&nbsp;&nbsp; (missing)</div><div><span class="green">FIX</span>&nbsp; Let OPTIONS reach the CORS handler.</div></div>
+<div class="footer"><span>github.com/Arthur031221/corswhy</span><span>MIT&nbsp;&nbsp; Node 20+&nbsp;&nbsp; No runtime dependencies</span></div>
+</body></html>

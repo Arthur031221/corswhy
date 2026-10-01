@@ -1,0 +1,26 @@
+{
+  "name": "corswhy",
+  "version": "0.1.0",
+  "description": "Explain which check rejects a browser CORS preflight request.",
+  "type": "module",
+  "bin": {
+    "corswhy": "bin/corswhy.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": ["bin", "src", "LICENSE"],
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": ["cors", "preflight", "options", "debug", "cli", "http"],
+  "author": "Arthur031221",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arthur031221/corswhy.git"
+  }
+}
