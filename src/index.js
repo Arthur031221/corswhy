@@ -36,6 +36,7 @@ export function parseArgs(argv) {
     if (!['http:', 'https:'].includes(origin.protocol) || origin.origin !== options.origin.replace(/\/$/, '') || origin.pathname !== '/' || origin.search || origin.hash || origin.username || origin.password) {
       throw new Error('Origin must be an HTTP or HTTPS origin without a path');
     }
+    options.origin = origin.origin;
   }
   if (!TOKEN.test(options.method) || ['CONNECT', 'TRACE', 'TRACK'].includes(options.method)) throw new Error('Invalid browser request method');
   if (!['omit', 'same-origin', 'include'].includes(options.credentials)) throw new Error('Credentials must be omit, same-origin, or include');
