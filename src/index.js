@@ -33,7 +33,7 @@ export function parseArgs(argv) {
   if (options.origin !== 'null') {
     let origin;
     try { origin = new URL(options.origin); } catch { throw new Error('Origin must be an HTTP or HTTPS origin'); }
-    if (!['http:', 'https:'].includes(origin.protocol) || origin.origin !== options.origin.replace(/\/$/, '') || origin.pathname !== '/' || origin.search || origin.hash || origin.username || origin.password) {
+    if (!['http:', 'https:'].includes(origin.protocol) || origin.pathname !== '/' || origin.search || origin.hash || origin.username || origin.password) {
       throw new Error('Origin must be an HTTP or HTTPS origin without a path');
     }
     options.origin = origin.origin;

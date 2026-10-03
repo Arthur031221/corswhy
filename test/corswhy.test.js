@@ -56,14 +56,19 @@ test('sends OPTIONS with browser preflight headers and never sends POST', async 
   assert.equal(requests.at(-1).headers['access-control-request-headers'], 'authorization, content-type');
 });
 
-test('normalizes a trailing slash from the supplied origin', async () => {
+test('normalizes an equivalent origin before sending the preflight', async () => {
   const beforeCount = requests.length;
   const output = [];
-  const code = await main([`${base}/pass`, '--origin', 'http://localhost:5173/', '--method', 'POST', '--header', 'authorization', '--json'], { out: s => output.push(s), err: () => {} });
+  const code = await main([`${base}/pass`, '--origin', 'HTTP://LOCALHOST:5173/', '--method', 'POST', '--header', 'authorization', '--json'], { out: s => output.push(s), err: () => {} });
   const report = JSON.parse(output[0]);
   assert.equal(code, 0);
   assert.equal(report.origin, 'http://localhost:5173');
   assert.equal(requests.slice(beforeCount)[0].headers.origin, 'http://localhost:5173');
+});
+
+test('normalizes equivalent origin URL spellings', () => {
+  const options = parseArgs(['http://localhost/api', '--origin', 'HTTPS://EXAMPLE.COM:443/']);
+  assert.equal(options.origin, 'https://example.com');
 });
 
 test('401 preflight reports status failure and authentication repair', async () => {
